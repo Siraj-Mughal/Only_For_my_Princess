@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Friends Forever</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #ccffcc, #99ff99);
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            color: #006600;
+            font-size: 3.5rem;
+            text-shadow: 0 0 20px rgba(0, 150, 0, 0.7);
+            animation: fadeIn 2s ease-in-out, glow 2s infinite alternate;
+        }
+        p {
+            font-size: 1.8rem;
+            color: #004d00;
+            animation: slideUp 2s ease-in-out, glow 2s infinite alternate;
+        }
+        .btn {
+            background: #008000;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            font-size: 1.5rem;
+            border-radius: 15px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(0, 100, 0, 0.5);
+            animation: bounce 2s infinite, glow 2s infinite alternate;
+        }
+        .btn:hover {
+            background: #006600;
+        }
+        .photo-frame {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .frame {
+            width: 180px;
+            height: 180px;
+            border: 6px solid #008000;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .frame:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 150, 0, 0.7);
+        }
+        .frame:hover img {
+            transform: rotate(5deg);
+        }
+
+        /* Falling Hearts Animation */
+        @keyframes fall {
+            0% { top: -10%; }
+            100% { top: 100%; }
+        }
+        .heart {
+            position: absolute;
+            color: #ff6666;
+            font-size: 24px;
+            animation: fall 5s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="happy-friendship-song.mp3" type="audio/mpeg">
+    </audio>
+    <div class="container">
+        <h1>Best Friends Forever! 💖</h1>
+        <p id="friend-message">True friendship is a treasure that lasts forever! 🌟 Thank you for being my best friend! 💕</p>
+        <button class="btn" onclick="showSurprise()">Click for a Surprise! 🎁</button>
+        <div class="photo-frame">
+            <div class="frame"><img src="img1.jpg" alt="Friend Picture"></div>
+            <div class="frame"><img src="img2.jpg" alt="Friend Picture"></div>
+            <div class="frame"><img src="img3.jpg" alt="Friend Picture"></div>
+        </div>
+    </div>
+
+    <script>
+        function showSurprise() {
+            alert("Friendship is the most beautiful bond! 💕 I am so lucky to have you as my best friend! 🎉😊 Ever since I met you, I can't stop smiling! 😁✨ You bring so much joy into my life, and now, I just want to cherish every moment with you forever. 💖🌸 I don’t know why, but my heart melts whenever you're around. 💞🥰 Thank you for being my sunshine! ☀️💫");
+        }
+        
+        function changeMessage() {
+            const messages = [
+                "A true friend is the greatest gift of life! 🎁",
+                "Friends make the world a brighter place! 🌍✨",
+                "Together, we create unforgettable memories! 📸",
+                "Friendship is a journey, not a destination! 🚀",
+                "Laughing with you is my favorite thing to do! 😂💖"
+            ];
+            const messageElement = document.getElementById("friend-message");
+            setInterval(() => {
+                const randomIndex = Math.floor(Math.random() * messages.length);
+                messageElement.textContent = messages[randomIndex];
+            }, 3000);
+        }
+        changeMessage();
+
+        // Falling Hearts Animation
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
